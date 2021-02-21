@@ -23,13 +23,23 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-         'name' => 'required',
+         'name_ar' => 'required',
+         'name_en' => 'required',
          'email' => 'required|email',
-         'phone' => 'required'
+         'phone' => 'required',
+         'academic_number' => 'required',
+         'job_title' => 'required',
+         'major' => 'required',
+         'speciality' => 'required',
+         'dob' => 'required',
+         'country' => 'required',
+         'city' => 'required',
+         'nationality' => 'required',
+         'institution' => 'required',
         ]);
 
         Contact::create($request->all());
-        return redirect()->back()->with('success','Create Successfully');
+        return redirect(route('contacts.index'))->with('success','Create Successfully');
     }
 
     public function show($id)
@@ -47,13 +57,23 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-         'name' => 'required',
-         'email' => 'required|email',
-         'phone' => 'required'
-        ]);
+            'name_ar' => 'required',
+            'name_en' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'academic_number' => 'required',
+            'job_title' => 'required',
+            'major' => 'required',
+            'speciality' => 'required',
+            'dob' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'nationality' => 'required',
+            'institution' => 'required',
+           ]);
 
-        Contact::where('id',$id)->update($request->all());
-        return redirect()->back()->with('success','Update Successfully');
+        Contact::where('id',$id)->update($request->except('_token', '_method'));
+        return redirect(route('contacts.index'))->with('success','Update Successfully');
         
     }
 
