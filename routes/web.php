@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Controllers\ContactController;
-Route::resource('contacts', ContactController::class);
+use App\Http\Controllers\ResearchController;
+Route::resource('researches', ResearchController::class);
 Route::get('/', function () {
     return view('welcome');
 });

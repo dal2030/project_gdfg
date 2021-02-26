@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    {!! F::open(['action' =>['App\Http\Controllers\ContactController@update',$data->id], 'method' => 'PUT'])!!}
+    {!! F::open(['action' =>['App\Http\Controllers\ResearchController@update',$data->id], 'method' => 'PUT'])!!}
 
     
         <div class="col-md-6">
