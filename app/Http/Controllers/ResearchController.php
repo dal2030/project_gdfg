@@ -2,6 +2,8 @@
 
 use App\Models\Research;
 use Response;
+use App\Exports\ResearchesExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -141,6 +143,12 @@ class ResearchController extends Controller
     {
         Research::where('id',$id)->delete();
         return redirect()->back()->with('success','Delete Successfully');
+    }
+
+
+    public function excel_export() 
+    {
+        return Excel::download(new ResearchesExport, 'researches.xlsx');
     }
 
 }

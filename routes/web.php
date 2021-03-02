@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ResearchController;
+Route::get('researches/export/', [ResearchController::class, 'excel_export'])->name('researches.excel_export');
 Route::resource('researches', ResearchController::class);
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('researches.index'));
 });
 
 
